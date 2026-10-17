@@ -840,6 +840,19 @@ button, input, select, textarea {
     border: 1px solid var(--color-sand);
 }
 
+
+.insta-author-meta { flex: 1; min-width: 0; }
+.insta-stats-row { display: flex; gap: 1.5rem; font-size: 0.82rem; color: var(--color-charcoal); flex-wrap: wrap; }
+.insta-avatar { flex-shrink: 0; }
+.insta-btn-wrap { flex-shrink: 0; }
+.insta-stories-row { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2.8rem; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 0.6rem; scrollbar-width: none; }
+.insta-stories-row::-webkit-scrollbar { display: none; }
+.insta-story-item { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; cursor: pointer; flex-shrink: 0; }
+.insta-story-ring { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--color-gold); padding: 2px; overflow: hidden; background: #fff; transition: transform 0.2s ease; }
+.insta-story-item:hover .insta-story-ring { transform: scale(1.05); }
+.insta-story-ring img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.insta-story-item span { font-size: 0.74rem; font-weight: 600; color: var(--color-charcoal); }
+
 .insta-author-info {
     display: flex;
     align-items: center;
@@ -1058,8 +1071,65 @@ button, input, select, textarea {
     .modal-media { height: 210px; }
     .modal-details { padding: 1.5rem; }
     .footer-top-grid { grid-template-columns: 1fr; }
-    .floating-whatsapp span { display: none; }
-    .floating-whatsapp { padding: 0.75rem; border-radius: 50%; }
+    
+    /* Instagram Mobile Stacking */
+    .insta-profile-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 1.25rem !important;
+        padding: 1.25rem 1rem !important;
+    }
+    .insta-author-info {
+        align-items: flex-start !important;
+        gap: 1rem !important;
+    }
+    .insta-avatar {
+        width: 58px !important;
+        height: 58px !important;
+    }
+    .insta-btn-wrap {
+        width: 100% !important;
+    }
+    .insta-btn-wrap .btn {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+    .insta-stories-row {
+        justify-content: flex-start !important;
+        gap: 1.2rem !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Floating WhatsApp Button Mobile Safe Positioning */
+    .floating-whatsapp {
+        bottom: 1.25rem !important;
+        right: 1.25rem !important;
+        width: 52px !important;
+        height: 52px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45) !important;
+        border: 2px solid #FFFFFF !important;
+        z-index: 999 !important;
+    }
+    .floating-whatsapp span {
+        display: none !important;
+    }
+    .floating-whatsapp svg {
+        width: 26px !important;
+        height: 26px !important;
+        margin: 0 !important;
+    }
+
+    
 }
 
 @media (max-width: 480px) {
