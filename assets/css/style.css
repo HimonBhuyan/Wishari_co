@@ -1055,3 +1055,120 @@ button, input, select, textarea {
     .inquiry-drawer { max-width: 100%; }
     .insta-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
 }
+
+/* ==========================================================================
+   LUXURY UPGRADES: GOLD SHIMMER, CURRENCY SWITCHER & SAMPLE BOX BANNER
+   ========================================================================== */
+
+/* Button Gold Shimmer Animation */
+.btn-gold, .btn-forest {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-gold::after, .btn-forest::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    transition: all 0.75s ease;
+    pointer-events: none;
+}
+
+.btn-gold:hover::after, .btn-forest:hover::after {
+    left: 140%;
+}
+
+/* Currency Selector */
+.currency-selector-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-gold-light);
+    font-size: 0.75rem;
+}
+
+.currency-dropdown {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+
+.currency-dropdown option {
+    background: var(--color-forest-dark);
+    color: #FFFFFF;
+}
+
+/* Physical Sample Box Assurance Banner */
+.sample-request-banner {
+    background: linear-gradient(135deg, var(--color-forest-dark) 0%, #0F1E18 100%);
+    border: 1.5px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: 2.2rem 2.8rem;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 3.5rem 0 1rem;
+    box-shadow: var(--shadow-lg);
+    flex-wrap: wrap;
+}
+
+.sample-banner-icon {
+    font-size: 2.5rem;
+    width: 65px;
+    height: 65px;
+    background: rgba(197, 160, 89, 0.15);
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sample-banner-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+.sample-banner-text h4 {
+    font-family: var(--font-editorial);
+    font-size: 1.6rem;
+    color: var(--color-gold-light);
+    margin-bottom: 0.4rem;
+}
+
+.sample-banner-text p {
+    font-size: 0.9rem;
+    color: rgba(250, 248, 245, 0.85);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .sample-request-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+    .sample-banner-icon { margin: 0 auto; }
+}

@@ -62,7 +62,16 @@
                 </nav>
 
                 <!-- Actions / Wishlist Drawer & CTA -->
-                <div class="nav-actions">
+                                <div class="nav-actions">
+                    <div class="currency-selector-wrapper">
+                        <span style="font-size: 0.65rem; opacity: 0.85; text-transform: uppercase;">Cur:</span>
+                        <select class="currency-dropdown" id="globalCurrencySelector" aria-label="Select Currency">
+                            <option value="INR" selected>INR (₹)</option>
+                            <option value="USD">USD ($)</option>
+                            <option value="AED">AED (د.إ)</option>
+                            <option value="GBP">GBP (£)</option>
+                        </select>
+                    </div>
                     <button class="btn-icon btn-inquiry-trigger" aria-label="View Wishlist" title="View Wishlist">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -122,6 +131,23 @@
     <main>
         @yield('content')
     </main>
+
+    <!-- Master Footer -->
+        <!-- Physical Sample Box Assurance Banner -->
+    <section class="section" style="padding: 1rem 0 3rem;">
+        <div class="container">
+            <div class="sample-request-banner">
+                <div class="sample-banner-icon">📦</div>
+                <div class="sample-banner-text">
+                    <h4>Planning a Curated Bulk Order of 30+ Units?</h4>
+                    <p>Experience the texture of our genuine leather sleeves, inspect hand-painted Jaipur blue pottery, and test wax seals in person. We courier an unboxing prototype to your doorstep within 48 hours.</p>
+                </div>
+                <a href="https://wa.me/919876543210?text=Hello%20Wishari,%20I%20am%20planning%20a%20bulk%20order%20of%2030+%20units%20and%20would%20like%20to%20request%20a%20physical%20sample%20box." target="_blank" rel="noopener" class="btn btn-gold btn-sm">
+                    Request Sample Box
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Master Footer -->
     <footer class="site-footer">

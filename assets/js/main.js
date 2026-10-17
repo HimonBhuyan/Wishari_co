@@ -420,3 +420,57 @@ function initConsultationForm() {
         }, 1200);
     });
 }
+
+
+// ==========================================================================
+// INTERNATIONAL CURRENCY SWITCHER (INR, USD, AED, GBP)
+// ==========================================================================
+function initCurrencyConverter() {
+    const selector = document.getElementById('globalCurrencySelector');
+    if (!selector) return;
+
+    const rates = {
+        INR: { symbol: '₹', rate: 1, label: 'INR (₹)' },
+        USD: { symbol: '$', rate: 1 / 84, label: 'USD ($)' },
+        AED: { symbol: 'AED ', rate: 1 / 22.8, label: 'AED (د.إ)' },
+        GBP: { symbol: '£', rate: 1 / 108, label: 'GBP (£)' }
+    };
+
+    let activeCurrency = localStorage.getItem('preferred_currency') || 'INR';
+    selector.value = activeCurrency;
+
+    function formatCurrency(amountINR) {
+        const cur = rates[activeCurrency] || rates.INR;
+        const converted = Math.round(amountINR * cur.rate);
+        return cur.symbol + converted.toLocaleString('en-US');
+    }
+
+    function convertAllPrices() {
+        const priceEls = document.querySelectorAll('.card-price, .modal-price, .range-slider-val, #drawerTotalAmount, #estimatorGrandTotal');
+        priceEls.forEach(el => {
+            if (!el.hasAttribute('data-original-inr')) {
+                const text = el.textContent.replace(/[^\d]/g, '');
+                const num = parseInt(text, 10);
+                if (!isNaN(num) && num > 0) {
+                    el.setAttribute('data-original-inr', num);
+                }
+            }
+
+            const inrVal = parseInt(el.getAttribute('data-original-inr'), 10);
+            if (!isNaN(inrVal)) {
+                el.textContent = formatCurrency(inrVal);
+            }
+        });
+    }
+
+    selector.addEventListener('change', (e) => {
+        activeCurrency = e.target.value;
+        localStorage.setItem('preferred_currency', activeCurrency);
+        convertAllPrices();
+        showToast(`Currency updated to ${rates[activeCurrency].label}`);
+    });
+
+    if (activeCurrency !== 'INR') {
+        setTimeout(convertAllPrices, 300);
+    }
+}
