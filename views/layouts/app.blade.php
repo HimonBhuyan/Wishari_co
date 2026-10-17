@@ -13,8 +13,8 @@
     <meta property="og:image" content="{{ $base_url }}/assets/images/blue_pottery_hero.jpg">
     <meta property="og:type" content="website">
 
-    <!-- Favicon (Tree of Life Symbol) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231E3A2F'><path d='M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 18H11V16.9C9.25 16.66 8 15.35 8 13.5C8 12.87 8.18 12.28 8.48 11.77L9.93 12.63C9.77 12.89 9.68 13.18 9.68 13.5C9.68 14.33 10.35 15 11.18 15H12V11H10.5C9.67 11 9 10.33 9 9.5C9 8.67 9.67 8 10.5 8H11V6H13V7.1C14.75 7.34 16 8.65 16 10.5C16 11.13 15.82 11.72 15.52 12.23L14.07 11.37C14.23 11.11 14.32 10.82 14.32 10.5C14.32 9.67 13.65 9 12.82 9H12V13H13.5C14.33 13 15 13.67 15 14.5C15 15.33 14.33 16 13.5 16H13V18Z'/></svg>">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ $base_url }}/assets/images/favicon.png">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ $base_url }}/assets/css/style.css">
@@ -41,13 +41,9 @@
                     </svg>
                 </button>
 
-                <!-- Brand Logo (Wishari Tree of Life with Infinity Loop) -->
-                <a href="{{ $base_url }}/?page=home" class="brand-logo">
-                    <svg class="brand-tree-icon" viewBox="0 0 24 24">
-                        <path d="M12 2C10.5 2 9.2 2.8 8.5 4C8.2 4 7.8 4 7.5 4C5 4 3 6 3 8.5C3 10.2 4 11.7 5.4 12.4C5.1 13 5 13.7 5 14.5C5 17 7 19 9.5 19H11V22H13V19H14.5C17 19 19 17 19 14.5C19 13.7 18.9 13 18.6 12.4C20 11.7 21 10.2 21 8.5C21 6 19 4 16.5 4C16.2 4 15.8 4 15.5 4C14.8 2.8 13.5 2 12 2Z"/>
-                    </svg>
-                    <span class="brand-title">WISHARI</span>
-                    <span class="brand-tagline">THE ART OF THOUGHTFUL GIFTING ∞</span>
+                <!-- Brand Logo (Official Wishari Identity) -->
+                <a href="{{ $base_url }}/?page=home" class="brand-logo" id="headerLogo" aria-label="Wishari Home">
+                    <img src="{{ $base_url }}/assets/images/logo_crop.png" alt="WISHARI - The Art of Thoughtful Gifting" class="site-logo-img">
                 </a>
 
                 <!-- Desktop Navigation Menu -->
@@ -84,10 +80,9 @@
     <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid var(--color-sand); background: #FFFFFF;">
-            <div class="brand-logo" style="align-items: flex-start;">
-                <span class="brand-title" style="font-size: 1.4rem;">WISHARI</span>
-                <span class="brand-tagline" style="font-size: 0.5rem;">THE ART OF THOUGHTFUL GIFTING ∞</span>
-            </div>
+            <a href="{{ $base_url }}/?page=home" class="brand-logo" style="align-items: flex-start;" aria-label="Wishari Home">
+                <img src="{{ $base_url }}/assets/images/logo_crop.png" alt="WISHARI" class="site-logo-img" style="height: 44px;">
+            </a>
             <button id="mobileDrawerClose" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--color-charcoal); padding: 0.4rem;">✕</button>
         </div>
         <div style="padding: 1.8rem 1.5rem; overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column;">

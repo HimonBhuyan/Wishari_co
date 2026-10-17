@@ -138,6 +138,20 @@ button, input, select, textarea {
 
 /* Wishari Tree of Life Logo */
 .brand-logo {
+    cursor: pointer;
+}
+.site-logo-img {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.brand-logo:hover .site-logo-img {
+    transform: scale(1.04);
+}
+.brand-logo-old {
     display: flex;
     flex-direction: column;
     align-items: center;
