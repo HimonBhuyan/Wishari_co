@@ -22,7 +22,7 @@
         <div class="card-footer">
             <div class="card-price-block">
                 <span class="card-price-label">Curated Investment</span>
-                <span class="card-price">{{ $product['price'] }}</span>
+                <span class="card-price" data-base-price="{{ $product['price_num'] }}">{{ $product['price'] }}</span>
             </div>
 
             <div style="display: flex; gap: 0.5rem; align-items: center;">

@@ -420,3 +420,180 @@ function initConsultationForm() {
         }, 1200);
     });
 }
+
+
+// ==========================================================================
+// INTERNATIONAL CURRENCY SWITCHER (INR, USD, AED, GBP)
+// ==========================================================================
+const CURRENCIES = {
+    INR: { code: "INR", symbol: "?", rate: 1.0, flag: "????" },
+    USD: { code: "USD", symbol: "$", rate: 0.0119, flag: "????" },
+    AED: { code: "AED", symbol: "AED ", rate: 0.0438, flag: "????" },
+    GBP: { code: "GBP", symbol: "?", rate: 0.00925, flag: "????" }
+};
+
+let currentCurrency = localStorage.getItem("wishari_currency") || "INR";
+
+function formatPrice(amountInINR) {
+    const curr = CURRENCIES[currentCurrency] || CURRENCIES.INR;
+    const converted = amountInINR * curr.rate;
+    
+    if (curr.code === "INR") {
+        return "?" + Math.round(converted).toLocaleString("en-IN");
+    } else {
+        return curr.symbol + Math.round(converted).toLocaleString("en-US");
+    }
+}
+
+window.formatPrice = formatPrice;
+
+function setCurrency(newCurr) {
+    if (!CURRENCIES[newCurr]) return;
+    currentCurrency = newCurr;
+    localStorage.setItem("wishari_currency", newCurr);
+
+    document.querySelectorAll(".currency-selector").forEach(sel => {
+        sel.value = newCurr;
+    });
+
+    document.querySelectorAll("[data-base-price]").forEach(el => {
+        const base = parseFloat(el.getAttribute("data-base-price"));
+        if (!isNaN(base)) {
+            el.textContent = formatPrice(base);
+        }
+    });
+
+    if (typeof window.updateWishariEstimator === "function") {
+        window.updateWishariEstimator();
+    }
+
+    if (typeof renderWishariDrawer === "function") {
+        renderWishariDrawer();
+    }
+
+    showToast(`Currency switched to ${CURRENCIES[newCurr].flag} ${newCurr}`);
+}
+
+window.setCurrency = setCurrency;
+
+function initCurrencySwitcher() {
+    const saved = localStorage.getItem("wishari_currency") || "INR";
+    document.querySelectorAll(".currency-selector").forEach(sel => {
+        sel.value = saved;
+    });
+    setCurrency(saved);
+}
+
+// ==========================================================================
+// 3-STEP OCCASION CONCIERGE QUIZ ENGINE
+// ==========================================================================
+function initOccasionQuiz() {
+    const quizSection = document.getElementById("conciergeQuizSection");
+    if (!quizSection) return;
+
+    const quizState = {
+        occasion: "wedding",
+        budget: "mid",
+        aesthetic: "pottery"
+    };
+
+    const recommendations = {
+        "wedding-royal-silver": {
+            title: "The Regal Rajwada Silver & Silk Casket",
+            desc: "BIS Hallmarked 999 certified Silver Ganesha Diya accompanied by organic saffron honey, silver foil cashews, and hand-embroidered zardozi greeting tag in a velvet-lined palace trunk.",
+            price: 7500,
+            image: "assets/images/silver_gifting_set.jpg"
+        },
+        "wedding-mid-pottery": {
+            title: "The Blue Poetry Sovereign Wedding Hamper",
+            desc: "Handcrafted Jaipur Blue Pottery canister accompanied by saffron mamra almonds, floral brass diya, and gold-foiled artisan story card in a rigid forest-green keepsake trunk.",
+            price: 3800,
+            image: "assets/images/blue_pottery_jar.jpg"
+        },
+        "corporate-royal-leather": {
+            title: "The Executive Sovereign Pure Leather Messenger Suite",
+            desc: "Full-grain genuine cognac leather messenger bag with custom debossed corporate monogram, accompanied by leather passport sleeve, brass pen, and organic single-origin coffee.",
+            price: 6500,
+            image: "assets/images/laptop_bags_sleeves.jpg"
+        },
+        "corporate-mid-leather": {
+            title: "The CXO Leather Folio & Artisan Brass Set",
+            desc: "Pure leather A4 document folio with blind monogram debossing, accompanied by brass bookmark, roasted pistachio flask, and customized CEO welcome note.",
+            price: 3500,
+            image: "assets/images/laptop_bags_sleeves.jpg"
+        },
+        "festive-mid-pottery": {
+            title: "The Shubh Deepavali Blue Poetry Celebration Hamper",
+            desc: "Hand-painted Jaipur Blue Pottery dry fruit jar, pair of pure brass lotus diyas, handmade organic incense cones, and artisanal saffron mithai assortment.",
+            price: 3200,
+            image: "assets/images/blue_poetry_mugs.jpg"
+        },
+        "festive-royal-silver": {
+            title: "The Auspicious Lakshmi-Ganesh 999 Silver Trunk",
+            desc: "Hallmarked 999 Silver Coin and Diya set nestled on ivory raw silk, accompanied by gold-dusted dry fruits and custom family blessings parchment.",
+            price: 8500,
+            image: "assets/images/silver_gifting_set.jpg"
+        },
+        "milestone-entry-pottery": {
+            title: "The Pastel Blue Heritage Arrival Jar",
+            desc: "Handcrafted baby arrival keepsake canister with non-toxic lead-free glaze, filled with organic roasted dry fruits, customized baby name card, and pastel satin bow.",
+            price: 2400,
+            image: "assets/images/blue_pottery_jar.jpg"
+        }
+    };
+
+    function updateQuizRecommendation() {
+        const key = `${quizState.occasion}-${quizState.budget}-${quizState.aesthetic}`;
+        const fallbackKey = `${quizState.occasion}-${quizState.budget}` in recommendations 
+            ? `${quizState.occasion}-${quizState.budget}` 
+            : "wedding-mid-pottery";
+
+        const item = recommendations[key] || recommendations[fallbackKey] || recommendations["wedding-mid-pottery"];
+
+        const titleEl = document.getElementById("quizResultTitle");
+        const descEl = document.getElementById("quizResultDesc");
+        const priceEl = document.getElementById("quizResultPrice");
+        const imgEl = document.getElementById("quizResultImg");
+        const waBtn = document.getElementById("quizWhatsAppBtn");
+
+        if (titleEl) titleEl.textContent = item.title;
+        if (descEl) descEl.textContent = item.desc;
+        if (priceEl) {
+            priceEl.setAttribute("data-base-price", item.price);
+            priceEl.textContent = formatPrice(item.price);
+        }
+        if (imgEl) {
+            imgEl.style.opacity = "0.4";
+            setTimeout(() => {
+                imgEl.src = item.image;
+                imgEl.style.opacity = "1";
+            }, 180);
+        }
+
+        if (waBtn) {
+            const occName = quizState.occasion.toUpperCase();
+            const msg = encodeURIComponent(`Hello Wishari Concierge, I completed your 30-Second Occasion Quiz for *${occName}*.\n\nRecommended: *${item.title}* (Budget approx ${formatPrice(item.price)}).\n\nCould you please share the sample box availability, bulk tier breakdown, and lead time?`);
+            waBtn.href = `https://wa.me/919876543210?text=${msg}`;
+        }
+    }
+
+    function setupStep(stepId, stateKey) {
+        const stepEl = document.getElementById(stepId);
+        if (!stepEl) return;
+
+        stepEl.querySelectorAll(".quiz-opt-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                stepEl.querySelectorAll(".quiz-opt-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                quizState[stateKey] = btn.getAttribute("data-val");
+                updateQuizRecommendation();
+            });
+        });
+    }
+
+    setupStep("quizStep1", "occasion");
+    setupStep("quizStep2", "budget");
+    setupStep("quizStep3", "aesthetic");
+
+    updateQuizRecommendation();
+}

@@ -94,7 +94,16 @@
                 <li><a href="{{ $base_url }}/?page=contact" class="mobile-nav-link {{ $current_page === 'contact' ? 'active' : '' }}">Consultation & Studio</a></li>
             </ul>
 
-            <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--color-sand);">
+            <div style="margin-top: auto; padding-top: 1.2rem; border-top: 1px solid var(--color-sand);">
+                <div style="margin-bottom: 1rem;">
+                    <label style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-charcoal-muted); font-weight: 600; display: block; margin-bottom: 0.35rem;">Currency Preference</label>
+                    <select class="currency-select-input currency-selector" onchange="setCurrency(this.value)" style="width: 100%; padding: 0.55rem 0.8rem; border-radius: 4px; border: 1px solid var(--color-sand); background: #FFFFFF; font-size: 0.85rem;" aria-label="Select Currency">
+                        <option value="INR">???? INR (?)</option>
+                        <option value="USD">???? USD ($)</option>
+                        <option value="AED">???? AED (?.?)</option>
+                        <option value="GBP">???? GBP (?)</option>
+                    </select>
+                </div>
                 <a href="{{ $base_url }}/?page=brief" class="btn btn-forest" style="width: 100%; margin-bottom: 0.8rem;">
                     Submit Your Brief
                 </a>

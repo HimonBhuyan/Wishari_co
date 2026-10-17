@@ -191,6 +191,124 @@
     </div>
 </section>
 
+
+<!-- Interactive 3-Step Occasion Concierge Quiz -->
+<section class="section section-bg-cream" id="conciergeQuizSection">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-pretitle">The 30-Second Concierge</span>
+            <h2 class="section-title">Find Your <em>Signature Gifting Suite</em></h2>
+            <p class="section-subtitle">Answer 3 brief questions to receive an instant bespoke artisan recommendation tailored to your celebration scale and aesthetic.</p>
+        </div>
+
+        <div class="quiz-card">
+            <div class="quiz-steps-row">
+                <!-- Step 1: Occasion -->
+                <div class="quiz-step-block">
+                    <div class="quiz-step-badge">Step 1</div>
+                    <h4 class="quiz-step-heading">Select Occasion</h4>
+                    <div class="quiz-options-group" id="quizStep1">
+                        <button type="button" class="quiz-opt-btn active" data-val="wedding">
+                            <span class="quiz-opt-icon">???</span>
+                            <span class="quiz-opt-title">Palace / Destination Wedding</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-val="corporate">
+                            <span class="quiz-opt-icon">??</span>
+                            <span class="quiz-opt-title">Executive CXO Summit</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-val="festive">
+                            <span class="quiz-opt-icon">??</span>
+                            <span class="quiz-opt-title">Diwali & Sacred Pooja</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-val="milestone">
+                            <span class="quiz-opt-icon">??</span>
+                            <span class="quiz-opt-title">Baby Announcement & Kids</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Budget Tier -->
+                <div class="quiz-step-block">
+                    <div class="quiz-step-badge">Step 2</div>
+                    <h4 class="quiz-step-heading">Budget Tier</h4>
+                    <div class="quiz-options-group" id="quizStep2">
+                        <button type="button" class="quiz-opt-btn" data-val="entry">
+                            <span class="quiz-opt-icon">?</span>
+                            <span class="quiz-opt-title">Thoughtful (?1,500 ? ?3,000)</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn active" data-val="mid">
+                            <span class="quiz-opt-icon">??</span>
+                            <span class="quiz-opt-title">Signature (?3,000 ? ?6,000)</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-val="royal">
+                            <span class="quiz-opt-icon">??</span>
+                            <span class="quiz-opt-title">Grand Silver & Silk (?6,000+)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Aesthetic -->
+                <div class="quiz-step-block">
+                    <div class="quiz-step-badge">Step 3</div>
+                    <h4 class="quiz-step-heading">Aesthetic Focus</h4>
+                    <div class="quiz-options-group" id="quizStep3">
+                        <button type="button" class="quiz-opt-btn active" data-val="pottery">
+                            <span class="quiz-opt-icon">??</span>
+                            <span class="quiz-opt-title">Jaipur Blue Pottery</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-val="leather">
+                            <span class="quiz-opt-icon">??</span>
+                            <span class="quiz-opt-title">Full-Grain Pure Leather</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-val="silver">
+                            <span class="quiz-opt-icon">???</span>
+                            <span class="quiz-opt-title">999 Certified Silver</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Dynamic Result Box -->
+            <div class="quiz-result-box" id="quizResultBox">
+                <div class="quiz-result-media">
+                    <img id="quizResultImg" src="{{ $base_url }}/assets/images/blue_pottery_jar.jpg" alt="Recommended Gifting Hamper">
+                    <span class="quiz-result-badge" id="quizResultBadge">98% Match For You</span>
+                </div>
+                <div class="quiz-result-info">
+                    <span class="quiz-result-pre">Curated Recommendation</span>
+                    <h3 class="quiz-result-title" id="quizResultTitle">The Blue Poetry Sovereign Hamper</h3>
+                    <p class="quiz-result-desc" id="quizResultDesc">Handcrafted Jaipur Blue Pottery canister accompanied by saffron mamra almonds, brass diya, and gold-foiled artisan story card in a rigid forest-green keepsake trunk.</p>
+                    
+                    <div class="quiz-result-metrics">
+                        <div class="quiz-metric-item">
+                            <span class="quiz-metric-lbl">Target Unit Budget</span>
+                            <span class="quiz-metric-val" id="quizResultPrice" data-base-price="3500">?3,500</span>
+                        </div>
+                        <div class="quiz-metric-item">
+                            <span class="quiz-metric-lbl">Lead Time</span>
+                            <span class="quiz-metric-val">3?5 Days (Express Sample in 48h)</span>
+                        </div>
+                        <div class="quiz-metric-item">
+                            <span class="quiz-metric-lbl">Suggested Scale</span>
+                            <span class="quiz-metric-val">25 to 300+ Units</span>
+                        </div>
+                    </div>
+
+                    <div class="quiz-result-actions">
+                        <a id="quizWhatsAppBtn" href="https://wa.me/919876543210?text=Hello%20Wishari,%20I%20took%20your%20Occasion%20Quiz%20and%20got%20The%20Blue%20Poetry%20Sovereign%20Hamper.%20I%20would%20like%20to%20request%20a%20sample%20box." target="_blank" rel="noopener" class="btn btn-gold btn-shimmer">
+                            <span>Request Sample Box on WhatsApp</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2Z"/></svg>
+                        </a>
+                        <a href="{{ $base_url }}/?page=brief" class="btn btn-outline">
+                            Customize in Brief Estimator
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Signature Collections Catalogue -->
 <section class="section section-bg-cream" id="signatureCatalogue">
     <div class="container">
@@ -215,6 +333,48 @@
             @foreach($products as $product)
                 @include('partials.product_card', ['product' => $product])
             @endforeach
+        </div>
+    </div>
+</section>
+
+
+<!-- Artisan Provenance & Craftsmanship Guarantee -->
+<section class="section section-bg-sand" id="craftsmanshipGuarantee">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-pretitle">The Wishari Hallmark</span>
+            <h2 class="section-title">Artisan Provenance & <em>Uncompromising Quality</em></h2>
+            <p class="section-subtitle">Every piece is verified for craftsmanship integrity before leaving our Jaipur atelier.</p>
+        </div>
+
+        <div class="provenance-grid">
+            <div class="provenance-card">
+                <div class="provenance-seal">??</div>
+                <h4>100% Authentic Jaipur Blue Pottery</h4>
+                <p>Molded from Egyptian paste and quartz powder without clay. Hand-painted with natural cobalt oxide and high-fired to an indelible gloss finish.</p>
+                <span class="provenance-tag">Lead-Free Certified</span>
+            </div>
+
+            <div class="provenance-card">
+                <div class="provenance-seal">??</div>
+                <h4>Certified Full-Grain Leather</h4>
+                <p>Natural vegetable-tanned leather in cognac and saddle brown. Ages with a rich, natural patina. Fitted with reinforced antique brass hardware.</p>
+                <span class="provenance-tag">Monogram Debossing Ready</span>
+            </div>
+
+            <div class="provenance-card">
+                <div class="provenance-seal">???</div>
+                <h4>999 Purity Certified Silver</h4>
+                <p>Devotional idols, auspicious coins, and diyas hallmarked with certified fineness. Accompanied by official laboratory test certification.</p>
+                <span class="provenance-tag">BIS Certified Purity</span>
+            </div>
+
+            <div class="provenance-card">
+                <div class="provenance-seal">??</div>
+                <h4>White-Glove Pan-India Dispatch</h4>
+                <p>Triple-layer shock absorbent casing with custom monogrammed wax seals. Guaranteed zero-breakage transit across 18,000+ pin codes and overseas air courier.</p>
+                <span class="provenance-tag">Insured Express Courier</span>
+            </div>
         </div>
     </div>
 </section>
@@ -244,6 +404,56 @@
                 <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
                     <a href="{{ $base_url }}/?page=about" class="btn btn-outline">Read Our Full Story</a>
                     <a href="https://instagram.com/wishari_co" target="_blank" rel="noopener" class="btn btn-forest">Connect on Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Verified Client Milestones & Case Studies -->
+<section class="section section-bg-cream" id="clientMilestones">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-pretitle">Verified Client Milestones</span>
+            <h2 class="section-title">Treasured by <em>Distinguished Hosts & Leaders</em></h2>
+            <p class="section-subtitle">Real feedback from palace weddings, luxury resorts, and national corporate leadership conferences.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">?????</div>
+                <p class="testimonial-quote">"For our delegates at Jai Mahal Palace (FBS Theatre of Dreams 4.0), Wishari curated 350+ bespoke welcome folios. The craftsmanship of the blue pottery and the precision of the delivery left all delegates utterly captivated."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar-initials">JM</div>
+                    <div>
+                        <strong>Organizing Committee</strong>
+                        <span>FBS Theatre of Dreams 4.0 ? Jai Mahal Palace, Jaipur</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">?????</div>
+                <p class="testimonial-quote">"The full-grain leather messenger bags and custom debossed stationery folios created for our CXO leadership conference in Gurugram were an absolute triumph. Unmatched sophistication."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar-initials">VP</div>
+                    <div>
+                        <strong>Vice President, Enterprise Solutions</strong>
+                        <span>Annual Executive Summit ? DLF CyberCity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">?????</div>
+                <p class="testimonial-quote">"Our destination wedding at Umaid Bhawan needed favors that reflected the royal heritage of Rajasthan. The blue pottery honey jars and certified silver Ganesha coins were loved by every single family member."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar-initials">RS</div>
+                    <div>
+                        <strong>Radhika & Siddharth Singhania</strong>
+                        <span>Destination Wedding ? Umaid Bhawan Palace, Jodhpur</span>
+                    </div>
                 </div>
             </div>
         </div>
